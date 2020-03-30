@@ -67,12 +67,24 @@ socket.on('data',function(data){
 
   //echo data
   var is_kernel_buffer_full = socket.write('ok');
+
   var client  = new net.Socket();
+
   client.connect({
     port: 9090,
     host: 'husky.spellkaze.com'
   });
 
+  var str = String(bread);
+  var lg = str.length;
+  if (lg == 1) {
+    str = '000' + str;
+  }else if (lg == 2) {
+    str = '00' + str;
+  }else if (lg == 3) {
+    str = '0' + str;
+  }
+  
   client.write(bread + data + '\0');
 
   if(is_kernel_buffer_full){

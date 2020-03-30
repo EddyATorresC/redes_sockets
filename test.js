@@ -1,7 +1,7 @@
 var net = require('net');
 var client  = new net.Socket();
 client.connect({
-  port: 2222,
+  port: 9090,
   //host: '181.198.128.12'
   host: '31.220.58.100'
 });
