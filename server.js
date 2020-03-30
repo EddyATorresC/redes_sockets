@@ -95,7 +95,7 @@ socket.on('data',function(data){
     socket.pause();
   }
 
-  client.end('Bye');
+  client.end('0011DISCONNECT');
 
 });
 

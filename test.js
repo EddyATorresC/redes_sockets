@@ -31,7 +31,7 @@ client.on('data',function(data){
 });
 
 setTimeout(function(){
-  client.end('Bye bye server');
+  client.end();
 },5000);
 
 //NOTE:--> all the events of the socket are applicable here..in client...
