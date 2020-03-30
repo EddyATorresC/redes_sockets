@@ -85,7 +85,7 @@ socket.on('data',function(data){
     str = '0' + str;
   }
 
-  var temp = bread + data + '\0';
+  var temp = str + data + '\0';
   console.log(temp);
   client.write(bread + data + '\0');
 
