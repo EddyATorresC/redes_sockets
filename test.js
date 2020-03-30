@@ -1,8 +1,9 @@
 var net = require('net');
 var client  = new net.Socket();
 client.connect({
-  port:2222,
-  host: '181.198.191.190'
+  port: 2222,
+  //host: '181.198.128.12'
+  host: '31.220.58.100'
 });
 
 client.on('connect',function(){
@@ -19,7 +20,7 @@ client.on('connect',function(){
 
 
   // writing data to server
-  client.write('hello from client');
+  client.write('hello from client JS');
 
 });
 

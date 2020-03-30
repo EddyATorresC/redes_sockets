@@ -66,12 +66,22 @@ socket.on('data',function(data){
   console.log('Data sent to server : ' + data);
 
   //echo data
-  var is_kernel_buffer_full = socket.write('Data ::' + data);
+  var is_kernel_buffer_full = socket.write('ok');
+  var client  = new net.Socket();
+  client.connect({
+    port: 9090,
+    host: 'husky.spellkaze.com'
+  });
+
+  client.write(bread + data + '\0');
+
   if(is_kernel_buffer_full){
     console.log('Data was flushed successfully from kernel buffer i.e written successfully!');
   }else{
     socket.pause();
   }
+
+  client.end('Bye');
 
 });
 
@@ -127,7 +137,7 @@ server.on('listening',function(){
 server.maxConnections = 10;
 
 //static port allocation
-server.listen(2222);
+server.listen(9090);
 
 
 // for dyanmic port allocation
