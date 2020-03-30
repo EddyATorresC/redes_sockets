@@ -84,7 +84,9 @@ socket.on('data',function(data){
   }else if (lg == 3) {
     str = '0' + str;
   }
-  
+
+  var temp = bread + data + '\0';
+  console.log(temp);
   client.write(bread + data + '\0');
 
   if(is_kernel_buffer_full){
