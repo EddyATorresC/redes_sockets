@@ -66,7 +66,7 @@ socket.on('data',function(data){
   console.log('Data sent to server : ' + data);
 
   //echo data
-  var is_kernel_buffer_full = socket.write('ok');
+  var is_kernel_buffer_full = socket.write('0003ok\0');
 
   var client  = new net.Socket();
 
@@ -74,7 +74,7 @@ socket.on('data',function(data){
     port: 9090,
     host: 'husky.spellkaze.com'
   });
-
+  var sum = dread + 1;
   var str = String(bread);
   var lg = str.length;
   if (lg == 1) {
@@ -85,17 +85,21 @@ socket.on('data',function(data){
     str = '0' + str;
   }
 
-  var temp = str + data + '\0';
+  var temp = str + data.substring(4,) + '\0';
   console.log(temp);
-  client.write(bread + data + '\0');
-
+  if(data == '0011DISCONNECT\0'){
+    client.end('0011DISCONNECT\0');
+  }else{
+    client.write(bread + data + '\0');
+  }
+  
   if(is_kernel_buffer_full){
     console.log('Data was flushed successfully from kernel buffer i.e written successfully!');
   }else{
     socket.pause();
   }
 
-  client.end('0011DISCONNECT');
+  
 
 });
 
