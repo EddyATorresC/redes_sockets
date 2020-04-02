@@ -75,7 +75,7 @@ socket.on('data',function(data){
     host: 'husky.spellkaze.com'
   });
   var sum = bread + 1;
-  var str = String(bread);
+  var str = String(sum);
   var lg = str.length;
   if (lg == 1) {
     str = '000' + str;
@@ -90,7 +90,7 @@ socket.on('data',function(data){
   if(data == '0011DISCONNECT\0'){
     client.end('0011DISCONNECT\0');
   }else{
-    client.write(bread + data + '\0');
+    client.write(str + data + '\0');
   }
   
   if(is_kernel_buffer_full){
