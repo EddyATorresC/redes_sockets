@@ -90,7 +90,7 @@ socket.on('data',function(data){
   if(data == '0011DISCONNECT\0'){
     client.end('0011DISCONNECT\0');
   }else{
-    client.write(str + data + '\0');
+    client.write(temp);
   }
   
   if(is_kernel_buffer_full){
