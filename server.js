@@ -74,7 +74,7 @@ socket.on('data',function(data){
     port: 9090,
     host: 'husky.spellkaze.com'
   });
-  var sum = dread + 1;
+  var sum = bread + 1;
   var str = String(bread);
   var lg = str.length;
   if (lg == 1) {
