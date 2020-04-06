@@ -3,7 +3,7 @@ var client  = new net.Socket();
 client.connect({
   port: 9090,
   //host: '181.198.128.12'
-  host: '31.220.58.100'
+  host: 'husky.spellkaze.com'
 });
 
 client.on('connect',function(){
@@ -20,7 +20,7 @@ client.on('connect',function(){
 
 
   // writing data to server
-  client.write('hello from client JS');
+  client.write('0008helloJS\0');
 
 });
 

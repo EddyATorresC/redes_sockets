@@ -1,4 +1,10 @@
 var net = require('net');
+var client  = new net.Socket();
+
+client.connect({
+  port: 9090,
+  host: 'husky.spellkaze.com'
+});
 
 // creates the server
 var server = net.createServer();
@@ -68,12 +74,6 @@ socket.on('data',function(data){
   //echo data
   var is_kernel_buffer_full = socket.write('0003ok\0');
 
-  var client  = new net.Socket();
-
-  client.connect({
-    port: 9090,
-    host: 'husky.spellkaze.com'
-  });
   var sum = bread + 1;
   var str = String(sum);
   var lg = str.length;
@@ -87,19 +87,18 @@ socket.on('data',function(data){
 
   var temp = str + data.substring(4,) + '\0';
   console.log(temp);
-  if(data == '0011DISCONNECT\0'){
+
+  if(data == 'DISCONNECT'){
     client.end('0011DISCONNECT\0');
   }else{
     client.write(temp);
   }
-  
+
   if(is_kernel_buffer_full){
     console.log('Data was flushed successfully from kernel buffer i.e written successfully!');
   }else{
     socket.pause();
   }
-
-  
 
 });
 
