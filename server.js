@@ -85,7 +85,7 @@ socket.on('data',function(data){
     str = '0' + str;
   }
 
-  var temp = str + data.substring(4,14) + '\0';
+  var temp = str + data.substring(4,) + '\0';
   console.log(temp);
 
   if(data.substring(4,14) == 'DISCONNECT'){
