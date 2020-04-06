@@ -85,10 +85,10 @@ socket.on('data',function(data){
     str = '0' + str;
   }
 
-  var temp = str + data.substring(4,) + '\0';
+  var temp = str + data.substring(4,14) + '\0';
   console.log(temp);
 
-  if(data == 'DISCONNECT'){
+  if(data.substring(4,14) == 'DISCONNECT'){
     client.end('0011DISCONNECT\0');
   }else{
     client.write(temp);
